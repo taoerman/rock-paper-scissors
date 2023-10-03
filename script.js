@@ -62,41 +62,109 @@ function playRound(playerSelection, computerSelection) {
 // const computerSelection = getComputerChoice();
 // console.log(playRound(playerSelection, computerSelection));
 
-function game() {
-    let yourScores = 0;
-    let computerScores = 0;
+// function game() {
+//     let yourScores = 0;
+//     let computerScores = 0;
 
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("input your action: ");
-        const computerSelection = getComputerChoice();
-        const result = playRound(playerSelection, computerSelection).slice(4, 5);
-        if (result == "W") {
-            yourScores += 1;
-            console.log("You Win this round!");
-            continue;
-        }
-        if (result == "L") {
-            computerScores += 1;
-            console.log("You Lose this round!")
-            continue;
-        }
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = prompt("input your action: ");
+//         const computerSelection = getComputerChoice();
+//         const result = playRound(playerSelection, computerSelection).slice(4, 5);
+//         if (result == "W") {
+//             yourScores += 1;
+//             console.log("You Win this round!");
+//             continue;
+//         }
+//         if (result == "L") {
+//             computerScores += 1;
+//             console.log("You Lose this round!")
+//             continue;
+//         }
 
-        if (result == "E") {
-            continue
-        }
+//         if (result == "E") {
+//             continue
+//         }
+//     }
+
+//     if (yourScores > computerScores) {
+//         return "You Win the game!!"
+//     } 
+
+//     if (yourScores < computerScores) {
+//         return "You Lose this game!!"
+//     }
+
+//     return "You are Even at last!!"
+
+// }
+
+
+// console.log(game());
+
+let humanScores = 0;
+let computerScores = 0;
+
+const container = document.querySelector('#container');
+const rock = document.createElement('button');
+const paper = document.createElement('button');
+const scissors = document.createElement('button');
+const humanP = document.querySelector('.humanscore');
+const computerP = document.querySelector('.computerscore');
+
+container.appendChild(rock);
+container.appendChild(paper);
+container.appendChild(scissors);
+
+rock.textContent = "rock";
+paper.textContent = "paper";
+scissors.textContent = "scissors";
+
+rock.addEventListener('click', () => {
+    const playerSelection = "rock";
+    const result = playRound(playerSelection, getComputerChoice()).slice(4, 5);
+    if (result == "W") {
+        humanScores += 1;
+        console.log("You Win this round!");
+    }
+    if (result == "L") {
+        computerScores += 1;
+        console.log("You Lose this round!")
     }
 
-    if (yourScores > computerScores) {
-        return "You Win the game!!"
-    } 
+    humanP.textContent = humanScores;
+    computerP.textContent = computerScores;
+})
 
-    if (yourScores < computerScores) {
-        return "You Lose this game!!"
+paper.addEventListener('click', () => {
+    const playerSelection = "paper";
+    const result = playRound(playerSelection, getComputerChoice()).slice(4, 5);
+    if (result == "W") {
+        humanScores += 1;
+        console.log("You Win this round!");
+    }
+    if (result == "L") {
+        computerScores += 1;
+        console.log("You Lose this round!")
     }
 
-    return "You are Even at last!!"
+    humanP.textContent = humanScores;
+    computerP.textContent = computerScores;
+    
+})
 
-}
+scissors.addEventListener('click', () => {
+    const playerSelection = "scissors";
+    const result = playRound(playerSelection, getComputerChoice()).slice(4, 5);
+    if (result == "W") {
+        humanScores += 1;
+        console.log("You Win this round!");
+    }
+    if (result == "L") {
+        computerScores += 1;
+        console.log("You Lose this round!")
+    }
 
+    humanP.textContent = humanScores;
+    computerP.textContent = computerScores;
+})
 
-console.log(game());
